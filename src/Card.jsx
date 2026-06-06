@@ -9,7 +9,7 @@ function Card(props) {
     borderRadius: '12px',
     textAlign: 'center',
     boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-    backgroundColor: '#fff',
+    backgroundColor: '#F4C2C2',
     color:'black',
 
       }}
