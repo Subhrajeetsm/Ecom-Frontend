@@ -7,7 +7,7 @@ function Products({ Searchquery }) {
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch(
-        'http://localhost:3000/products'
+        'https://ecomdemod.onrender.com/products'
       );
       const data = await response.json();
       setProducts(data);
