@@ -7,7 +7,7 @@ function Products({ Searchquery }) {
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch(
-        'https://ecomdemod.onrender.com/products/'
+        'http://localhost:3000/products'
       );
       const data = await response.json();
       setProducts(data);
@@ -25,7 +25,7 @@ function Products({ Searchquery }) {
     <div style={
 
       {
-            display: "flex",
+     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "20px",
@@ -36,7 +36,7 @@ function Products({ Searchquery }) {
       {filterPr.map((e) => (
         <Card
           id={e.id}
-          image={e.image}
+          img={e.img}
           title={e.title}
           price={e.price}
         />

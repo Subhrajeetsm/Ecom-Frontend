@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
+import "./Header.css";
 
 function Header({ SetSearchquery }) {
   const [count, setCount] = useState(0);
 
   function toggleDarkMode() {
-    document.body.classList.toggle('dark');
+    document.body.classList.toggle("dark");
   }
 
   function handCount() {
@@ -13,56 +14,41 @@ function Header({ SetSearchquery }) {
 
   return (
     <>
-      <input
-        type="checkbox"
-        onChange={toggleDarkMode}
-        style={{ margin: '0 10px' }}
-      />
-      Toggle Dark Mode
+      <div className="top-bar">
+        <label>
+          <input
+            type="checkbox"
+            onChange={toggleDarkMode}
+            style={{ marginRight: "8px" }}
+          />
+          Dark Mode
+        </label>
+      </div>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '10px 20px',
-          backgroundColor: '#f0f0f0',
-        }}
-      >
-        <h2 style={{ margin: 0, color: 'black' }}>My Store</h2>
+      <header className="header">
+        <h2 className="logo">S-Mart</h2>
 
         <input
           type="text"
-          placeholder="Search products..."
+          placeholder="🔍 Search products..."
           onChange={(e) => SetSearchquery(e.target.value)}
-          style={{
-            padding: '10px',
-            borderRadius: '4px',
-            border: '1px solid #ccc',
-            width: '75%',
-          }}
+          className="search-box"
         />
 
-        <nav>
-          <a href="#" style={{ margin: '0 2px' }}>
-            Home
-          </a>
-          <a href="#" style={{ margin: '0 2px' }}>
-            Details
-          </a>
-          <a href="#" style={{ margin: '0 2px' }}>
-            About
-          </a>
-          <a href="#" style={{ margin: '0 2px' }}>
-            Sign In
-          </a>
-          <a href="#" style={{ margin: '0 2px' }}>
-            Sign Up
-          </a>
+        <nav className="nav-links">
+          <a href="#">Home</a>
+          <a href="#">Details</a>
+          <a href="#">About</a>
+          <a href="#">Sign In</a>
+          <a href="#">Sign Up</a>
         </nav>
-      </div>
+      </header>
 
-      <button onClick={handCount}>Count {count}</button>
+      <div className="count-container">
+        <button className="count-btn" onClick={handCount}>
+          Count {count}
+        </button>
+      </div>
     </>
   );
 }
