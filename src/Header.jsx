@@ -1,56 +1,28 @@
-import { useState } from "react";
-import "./Header.css";
+import { Link } from 'react-router-dom'
 
-function Header({ SetSearchquery }) {
-  const [count, setCount] = useState(0);
-
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark");
-  }
-
-  function handCount() {
-    setCount(count + 1);
+function Header({ setsearchquery }) {
+  function togglemode() {
+    document.body.classList.toggle('dark')
   }
 
   return (
-    <>
-      <div className="top-bar">
-        <label>
-          <input
-            type="checkbox"
-            onChange={toggleDarkMode}
-            style={{ marginRight: "8px" }}
-          />
-          Dark Mode
-        </label>
-      </div>
-
-      <header className="header">
-        <h2 className="logo">S-Mart</h2>
-
-        <input
-          type="text"
-          placeholder="🔍 Search products..."
-          onChange={(e) => SetSearchquery(e.target.value)}
-          className="search-box"
-        />
-
-        <nav className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Details</a>
-          <a href="#">About</a>
-          <a href="#">Sign In</a>
-          <a href="#">Sign Up</a>
-        </nav>
-      </header>
-
-      <div className="count-container">
-        <button className="count-btn" onClick={handCount}>
-          Count {count}
-        </button>
-      </div>
-    </>
-  );
+    <header style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <img src="src/assets/vite.svg" alt="LOGO" />
+      <input
+        onChange={(e) => setsearchquery(e.target.value)}
+        style={{ borderRadius: '10px', width: '33%' }}
+        placeholder="search the products..."
+        type="text"
+      />
+      <nav style={{ display: 'flex', gap: '10px' }}>
+        <Link to="/">HOME</Link>
+        <Link to="/about">ABOUT</Link>
+        <Link to="/products">PRODUCTS</Link>
+        <Link to="/signup">signup</Link>
+      </nav>
+      <button onClick={togglemode}>dark/light</button>
+    </header>
+  )
 }
 
-export default Header;
+export default Header

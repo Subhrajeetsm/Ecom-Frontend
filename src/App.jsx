@@ -1,39 +1,39 @@
-import { useState } from 'react';
-import './App.css';
-
-import Header from './Header';
-import Signin from './signin';
-import Signup from './singup';
-import Products from './Products';
-
-import { Routes, Route } from 'react-router-dom';
+import Header from './header'
+import About from './About'
+import { Route, Routes,  } from 'react-router-dom'
+import Products from './Products'
+import Signup from './Signup'
+import { useState } from 'react'
+import './App.css'
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchquery, setsearchquery] = useState('')
 
   return (
     <>
-      <Header SetSearchquery={setSearchQuery} />
-
-      <h1>My Store</h1>
-
+      <Header setsearchquery={setsearchquery} />
       <Routes>
+        <Route path="/about" element={<About />} />
         <Route
           path="/"
-          element={<Products Searchquery={searchQuery} />}
+          element={
+           
+              <Products searchquery={searchquery} />
+           
+          }
         />
-<Route
-  path="/signin"
-  element={<Signin />}
-/>
+        <Route
+          path="/products"
+          element={
+            
+              <Products searchquery={searchquery} />
+          }
+        />
 
-<Route
-  path="/signup"
-  element={<Signup />}
-/>
+        <Route path='/signup'  element={<Signup/>} />
       </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
