@@ -26,6 +26,7 @@ function Signup() {
             if(finalresponse.token)
             {
               localStorage.setItem("Token",finalresponse.token)
+              alert(finalresponse.token);
             }
             else{
                 alert(finalresponse.msg||"somthig went worng")
