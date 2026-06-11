@@ -19,6 +19,7 @@ function Header({ setsearchquery }) {
         <Link to="/about">ABOUT</Link>
         <Link to="/products">PRODUCTS</Link>
         <Link to="/signup">signup</Link>
+        <Link to="/login">Login</Link>
       </nav>
       <button onClick={togglemode}>dark/light</button>
     </header>

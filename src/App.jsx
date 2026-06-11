@@ -3,6 +3,7 @@ import About from './About'
 import { Route, Routes,  } from 'react-router-dom'
 import Products from './Products'
 import Signup from './Signup'
+import Login from './Login'
 import { useState } from 'react'
 import './App.css'
 
@@ -29,7 +30,7 @@ function App() {
               <Products searchquery={searchquery} />
           }
         />
-
+        <Route path='/login' element={<Login/>}/>
         <Route path='/signup'  element={<Signup/>} />
       </Routes>
     </>

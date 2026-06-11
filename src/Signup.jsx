@@ -14,7 +14,7 @@ function Signup() {
                   username,password,email,role
                 }
                 event.preventDefault();
-               let result=await fetch('https://ecomdemod.onrender.com/auth/register',{
+               let result=await fetch('http://localhost:3000/auth/register',{
                   method:'POST',
                   headers:{
                     "Content-Type": "application/json"
@@ -22,7 +22,14 @@ function Signup() {
                   body:JSON.stringify(userdetails)
                 })
             let finalresponse=await result.json();
-            alert(`${finalresponse.msg}`)
+            //sever or backend will send a token as a resopnse
+            if(finalresponse.token)
+            {
+              localStorage.setItem("Token",finalresponse.token)
+            }
+            else{
+                alert(finalresponse.msg||"somthig went worng")
+            }
          }
 
 
