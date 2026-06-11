@@ -1,49 +1,50 @@
-import { useState, useEffect } from 'react';
-import Card from './Card';
 
-function Products({ Searchquery }) {
-  const [products, setProducts] = useState([]);
+import {useState,useEffect} from "react"
+import Card from './Card'
+function Products({searchquery}) {
+    const [products, setproducts] = useState([])
+//   //fetch the products from fakestore api
+//   async function fetchproducts(){
+//       let data= await fetch('https://fakestoreapi.com/products')
+//     let finaldata=await data.json()
+//          setproducts(finaldata)
+//          return;
+//   }
+//   fetchproducts();
 
-  useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch(
-        'https://ecomdemod.onrender.com/products'
-      );
-      const data = await response.json();
-      setProducts(data);
-    }
+useEffect(() => {
+    
+    fetch('https://ecomdemod.onrender.com/products')
+      .then(response => response.json())
+      .then(data => setproducts(data));
+      
+}, [])
 
-    fetchProducts();
-  }, []);
 
-  const filterPr = products.filter((p) =>
-    p.title.toLowerCase().includes(Searchquery.toLowerCase())
-  );
+
+
+//filter out th producrs bas3d on searchquery
+  let filteredproducts=products.filter((p)=>{
+   return p.title.toLowerCase().includes(searchquery.toLowerCase())
+  })
+
+
+
+
+
 
   return (
     <>
-    <div style={
+    <div style={{display:"flex",flexWrap:"wrap"}} >
+    {
+        filteredproducts.map((e)=>{
+            return <Card img={e.img} title={e.title} price={e.price}    />
+        })
+    }
 
-      {
-     display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "20px",
-    padding: "20px",
-
-      }
-    }>
-      {filterPr.map((e) => (
-        <Card
-          id={e.id}
-          img={e.img}
-          title={e.title}
-          price={e.price}
-        />
-      ))}
-      </div>
+    </div>
     </>
-  );
+  )
 }
 
-export default Products;
+export default Products
