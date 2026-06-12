@@ -73,7 +73,7 @@ function Signup() {
 </select>
      </div>
       <button className="signup-btn" type="submit" >register</button>
-    </form>
+</form>
 
     </>
   )
